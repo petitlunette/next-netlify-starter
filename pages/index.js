@@ -10,42 +10,6 @@ import Head from 'next/head'
 import Header from '@components/Header'
 import Footer from '@components/Footer'
 
-export default function Home() {
-  return (
-    <div className="container">
-      <Head>
-        <title>Next.js Starter!</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main>
-        <Header title="Welcome to my app!" />
-        <p className="description">
-          Get started by editing <code>pages/index.js</code>
-        </p>
-      </main>
-      <Row>
-        {BlogData.map((blg) => (
-          <Col sm="6" lg="6" xl="3" key={blg.title}>
-            <Blog
-              image={blg.image}
-              title={blg.title}
-              subtitle={blg.subtitle}
-              description={blg.description} // Changed from text to description
-              color={blg.btnbg}
-            />
-          </Col>
-        ))}
-      </Row>
-    </div>
-  );
-}
-      <Footer />
-    </div>
-  )
-}
-
-
 const BlogData = [
   {
     image: bg1,
@@ -80,3 +44,38 @@ const BlogData = [
     btnbg: "primary",
   },
 ];
+
+export default function Home() {
+  return (
+    <div className="container">
+      <Head>
+        <title>Next.js Starter!</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
+      <main>
+        <Header title="Welcome to my app!" />
+        <p className="description">
+          Get started by editing <code>pages/index.js</code>
+        </p>
+
+        <Row>
+          {BlogData.map((blg) => (
+            <Col sm="6" lg="6" xl="3" key={blg.title}>
+              <Blog
+                image={blg.image}
+                title={blg.title}
+                subtitle={blg.subtitle}
+                text={blg.description} // Match the prop name with the Blog component
+                color={blg.btnbg}
+              />
+            </Col>
+          ))}
+        </Row>
+      </main>
+
+      <Footer />
+    </div>
+  );
+}
+
